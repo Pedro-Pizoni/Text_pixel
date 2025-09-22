@@ -27,6 +27,6 @@ int main() {
         p.draw();
     }
 
-    std::cout << "\033[20;0H"; // move cursor para baixo no final
+    std::cout << "\033[20;0H"; 
     return 0;
 }

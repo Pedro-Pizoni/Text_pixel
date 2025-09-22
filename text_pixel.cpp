@@ -1,6 +1,7 @@
 #include "text_pixel.hpp"
 #include <iostream>
 
+// Construtor padrão
 text_pixel::text_pixel() : point2D(0, 0), color_("white") {}
 text_pixel::text_pixel(int px, int py, const std::string& pcolor)
     : point2D(px, py), color_(pcolor) {}
@@ -15,7 +16,7 @@ void text_pixel::color(const std::string& c) {
     color_ = c;
 }
 
-// Código ANSI da cor
+// Código das cores
 std::string text_pixel::color_code() const {
     if (color_ == "black")   return "30";
     if (color_ == "red")     return "31";
@@ -36,7 +37,7 @@ void text_pixel::draw() const {
               << "\033[0m";
 }
 
-// Operadores globais
+// Operadores 
 bool operator==(const text_pixel& lhs, const text_pixel& rhs) {
     return point2D(lhs) == point2D(rhs) && (lhs.color() == rhs.color());
 }
