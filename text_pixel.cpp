@@ -40,12 +40,16 @@ std::string text_pixel::color_code() const { // color_code é um metodo da class
 
 // Desenha o pixel colorido
 void text_pixel::draw() const { // draw é um metodo da classe text_pixel // herança
-    std::cout << "\033[" << (y_+1) << ";" << (x_+1) << "H"<< "\033[" << color_code() << "m"<< "█"<< "\033[0m";
+    std::cout << "\033[" << (y_+1) << ";" << (x_+1) << "H"
+          << "\033[" << (std::stoi(color_code()) + 10) << "m"  // cor de fundo
+          << " " 
+          << "\033[0m";
+
 }
 
 // Operadores 
 bool operator==(const text_pixel& lhs, const text_pixel& rhs) {
-    return point2D(lhs) == point2D(rhs) && (lhs.color() == rhs.color());
+    return lhs.x() == rhs.x() && lhs.y() == rhs.y() && lhs.color() == rhs.color();
 }
 
 bool operator!=(const text_pixel& lhs, const text_pixel& rhs) {
@@ -53,5 +57,6 @@ bool operator!=(const text_pixel& lhs, const text_pixel& rhs) {
 }
 
 std::ostream& operator<<(std::ostream& lhs, const text_pixel& rhs) {
-    return lhs << "(" << point2D(rhs) << ", " << rhs.color() << ")";
+   return lhs << "(" << rhs.x() << ", " << rhs.y() << ", " << rhs.color() << ")";
+
 }
