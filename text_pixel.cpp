@@ -17,7 +17,7 @@ void text_pixel::color(const std::string& c) {
 }
 
 // Código das cores
-std::string text_pixel::color_code() const {
+std::string text_pixel::color_code() const { // color_code é um metodo da classe text_pixel // herança  
     if (color_ == "black")   return "30";
     if (color_ == "red")     return "31";
     if (color_ == "green")   return "32";
@@ -26,15 +26,21 @@ std::string text_pixel::color_code() const {
     if (color_ == "magenta") return "35";
     if (color_ == "cyan")    return "36";
     if (color_ == "white")   return "37";
+    if (color_ == "bright_black")   return "90";
+    if (color_ == "bright_red")     return "91";
+    if (color_ == "bright_green")   return "92";
+    if (color_ == "bright_yellow")  return "93";
+    if (color_ == "bright_blue")    return "94";
+    if (color_ == "bright_magenta") return "95";
+    if (color_ == "bright_cyan")    return "96";
+    if (color_ == "bright_white")   return "97";
+
     return "0"; // padrão
 }
 
 // Desenha o pixel colorido
-void text_pixel::draw() const {
-    std::cout << "\033[" << (y_+1) << ";" << (x_+1) << "H"
-              << "\033[" << color_code() << "m"
-              << "█"
-              << "\033[0m";
+void text_pixel::draw() const { // draw é um metodo da classe text_pixel // herança
+    std::cout << "\033[" << (y_+1) << ";" << (x_+1) << "H"<< "\033[" << color_code() << "m"<< "█"<< "\033[0m";
 }
 
 // Operadores 

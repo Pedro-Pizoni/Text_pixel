@@ -5,22 +5,30 @@
 int main() {
     std::vector<text_pixel> pixels;
 
-    // Linha horizontal em y=5, indo de x=10 até x=20
-    for (int x = 10; x <= 20; x++) {
-        pixels.push_back(text_pixel(x, 5, "red"));
-    }
+    // Pokebola 
+    int centerX = 15;
+    int centerY = 8;
+    int radius = 5; 
 
-    // Coluna vertical em x=15, indo de y=6 até y=12
-    for (int y = 6; y <= 12; y++) {
-        pixels.push_back(text_pixel(15, y, "green"));
-    }
-
-    // Retângulo preenchido de 5x3 em (30,10) usando azul
-    for (int y = 10; y < 13; y++) {
-        for (int x = 30; x < 35; x++) {
-            pixels.push_back(text_pixel(x, y, "blue"));
+    for (int y = centerY - radius; y <= centerY + radius; y++) {
+        for (int x = centerX - radius; x <= centerX + radius; x++) {
+            int dx = x - centerX;
+            int dy = y - centerY;
+            if (dx*dx + dy*dy <= radius*radius) {
+                if (y < centerY) {
+                    pixels.push_back(text_pixel(x, y, "red"));   // topo vermelho
+                } else if (y > centerY) {
+                    pixels.push_back(text_pixel(x, y, "white")); // parte de baixo branca
+                } else {
+                    pixels.push_back(text_pixel(x, y, "black")); // faixa preta
+                }
+            }
         }
     }
+
+    // Botão central (preto com ponto branco)
+    pixels.push_back(text_pixel(centerX, centerY, "black"));
+    pixels.push_back(text_pixel(centerX, centerY, "white")); // pontinho central
 
     // Desenha todos os pixels criados
     for (auto &p : pixels) {

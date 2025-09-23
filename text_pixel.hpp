@@ -3,7 +3,7 @@
 #include <string>
 #include <ostream>
 
-class text_pixel : public point2D {
+class text_pixel : public point2D { // herança da classe point2d
 protected:
     std::string color_;
 
