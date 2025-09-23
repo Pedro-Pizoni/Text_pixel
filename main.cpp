@@ -25,8 +25,8 @@ int main() {
         }
     }
 
-    // Botão central (preto com ponto branco)
-    pixels.push_back(text_pixel(centerX, centerY, "black"));
+   
+    pixels.push_back(text_pixel(centerX, centerY, "black")); // botao da pokebola
     pixels.push_back(text_pixel(centerX, centerY, "white")); // botao da pokebola
 
     for (auto &p : pixels) {
