@@ -5,7 +5,6 @@
 int main() {
     std::vector<text_pixel> pixels;
 
-    // Pokebola 
     int centerX = 15;
     int centerY = 8;
     int radius = 5; 
@@ -16,11 +15,11 @@ int main() {
             int dy = y - centerY;
             if (dx*dx + dy*dy <= radius*radius) {
                 if (y < centerY) {
-                    pixels.push_back(text_pixel(x, y, "red"));   // topo vermelho
+                    pixels.push_back(text_pixel(x, y, "red"));   // topo da pokebola 
                 } else if (y > centerY) {
-                    pixels.push_back(text_pixel(x, y, "white")); // parte de baixo branca
+                    pixels.push_back(text_pixel(x, y, "white")); // parte de bauxo da pokebla
                 } else {
-                    pixels.push_back(text_pixel(x, y, "black")); // faixa preta
+                    pixels.push_back(text_pixel(x, y, "black")); // parte do meio da pokebola
                 }
             }
         }
@@ -28,9 +27,8 @@ int main() {
 
     // Botão central (preto com ponto branco)
     pixels.push_back(text_pixel(centerX, centerY, "black"));
-    pixels.push_back(text_pixel(centerX, centerY, "white")); // pontinho central
+    pixels.push_back(text_pixel(centerX, centerY, "white")); // botao da pokebola
 
-    // Desenha todos os pixels criados
     for (auto &p : pixels) {
         p.draw();
     }
